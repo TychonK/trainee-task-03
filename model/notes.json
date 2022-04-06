@@ -1,37 +1,51 @@
 [
   {
     "id": "1",
-    "text": "Allen Raymond",
-    "category": "nulla.ante@vestibul.co.uk"
+    "text": "Lorem ipsum",
+    "category": "random thought",
+    "time": "2022-4-11 | 13:20",
+    "archived": false
   },
   {
     "id": "2",
-    "text": "Chaim Lewis",
-    "category": "dui.in@egetlacus.ca"
+    "text": "Lorem ipsum",
+    "category": "task",
+    "time": "2022-12-6 | 11:21",
+    "archived": false
   },
   {
     "id": "3",
-    "text": "Kennedy Lane",
-    "category": "mattis.Cras@nonenimMauris.net"
+    "text": "Lorem ipsum",
+    "category": "task",
+    "time": "2022-1-2 | 14:02",
+    "archived": false
   },
   {
     "id": "4",
-    "text": "Wylie Pope",
-    "category": "est@utquamvel.net"
+    "text": "Lorem ipsum",
+    "category": "idea",
+    "time": "2022-2-7 | 17:43",
+    "archived": false
   },
   {
     "id": "5",
-    "text": "Cyrus Jackson",
-    "category": "nibh@semsempererat.com"
+    "text": "Lorem ipsum",
+    "category": "random thought",
+    "time": "2022-1-4 | 12:24",
+    "archived": true
   },
   {
     "id": "6",
-    "text": "Abbot Franks",
-    "category": "scelerisque@magnis.org"
+    "text": "Lorem ipsum",
+    "category": "task",
+    "time": "2022-1-9 | 09:25",
+    "archived": false
   },
   {
     "id": "7",
-    "text": "Reuben Henry",
-    "category": "pharetra.ut@dictum.co.uk"
+    "text": "Lorem ipsum",
+    "category": "random thought",
+    "time": "2022-7-3 | 16:30",
+    "archived": false
   }
 ]
