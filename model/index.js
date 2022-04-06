@@ -12,8 +12,28 @@ const listNotes = () => {
 }
 
 const getNoteById = (noteId) => {
-  const note = notes.find((note) => note.id == noteId)
+  const note = notes.find(note => note.id == noteId)
   return note
+}
+
+const listStats = () => {
+  const allCategories = notes.map(note => {
+    return note.category
+  })
+
+  const uniqueCategories = Array.from(new Set(allCategories))
+
+  const stats = uniqueCategories.map(uniqueCategory => {
+      const obj = {
+          [uniqueCategory]: {
+              active: notes.filter(note => note.category === uniqueCategory && note.archived === false).length,
+              archived: notes.filter(note => note.category === uniqueCategory && note.archived === true).length
+          }
+      }
+      return obj
+  })
+
+  return stats
 }
 
 const removeNote = async (noteId) => {
@@ -28,7 +48,7 @@ const removeNote = async (noteId) => {
 }
 
 const addNote = async (body) => {
-  const newNote = { id: randomUUID(), ...body };
+  const newNote = { id: randomUUID(), ...body, archived: false };
   notes.push(newNote)
   await fs.writeFile(notesPath, JSON.stringify(notes, null, 2))
   return newNote
@@ -50,6 +70,7 @@ const updateNote = async (noteId, body) => {
 
 export default {
   listNotes,
+  listStats,
   getNoteById,
   removeNote,
   addNote,

@@ -2,13 +2,15 @@ import Joi from "joi";
 
 const createSchema = Joi.object({
     text: Joi.string().required(),
-    category: Joi.string().required()
+    category: Joi.string().required(),
+    time: Joi.string().required()
 })
 
 const updateSchema = Joi.object({
     text: Joi.string().optional(),
-    category: Joi.string().email().optional()
-}).or('text', 'category')
+    category: Joi.string().email().optional(),
+    archived: Joi.boolean().optional()
+}).or('text', 'category', 'archived')
 
 const idSchema = Joi.object({
     id: Joi.string().required()
