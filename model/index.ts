@@ -11,7 +11,7 @@ const listNotes = () => {
   return notes
 }
 
-const getNoteById = (noteId) => {
+const getNoteById = (noteId: string) => {
   const note = notes.find(note => note.id == noteId)
   return note
 }
@@ -36,7 +36,7 @@ const listStats = () => {
   return stats
 }
 
-const removeNote = async (noteId) => {
+const removeNote = async (noteId: string) => {
   const noteExists = await getNoteById(noteId)
   if (!noteExists) {
     return null
@@ -47,14 +47,14 @@ const removeNote = async (noteId) => {
   return notesAfterRemoval
 }
 
-const addNote = async (body) => {
+const addNote = async (body: any) => {
   const newNote = { id: randomUUID(), ...body, archived: false };
   notes.push(newNote)
   await fs.writeFile(notesPath, JSON.stringify(notes, null, 2))
   return newNote
 }
 
-const updateNote = async (noteId, body) => {
+const updateNote = async (noteId: string, body: any) => {
   const noteExists = await getNoteById(noteId)
   if (!noteExists) {
     return null

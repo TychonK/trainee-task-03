@@ -16,19 +16,19 @@ const idSchema = Joi.object({
     id: Joi.string().required()
 })
 
-export const validateCreate = async (req, res, next) => {
+export const validateCreate = async (req: any, res: any, next: any) => {
     try {
         const value = await createSchema.validateAsync(req.body)
-    } catch (err) {
+    } catch (err: any) {
         return res.status(400).json({message: err.message.replace(/"/g, '')})
     }
     next()
 }
 
-export const validateUpdate = async (req, res, next) => {
+export const validateUpdate = async (req: any, res: any, next: any) => {
     try {
         const value = await updateSchema.validateAsync(req.body)
-    } catch (err) {
+    } catch (err: any) {
         const [{ type }] = err.details
         if (type === 'object.unknown') {
             return res.status(400).json({ message: err.message })
@@ -38,10 +38,10 @@ export const validateUpdate = async (req, res, next) => {
     next()
 }
 
-export const validateId = async (req, res, next) => {
+export const validateId = async (req: any, res: any, next: any) => {
     try {
         const value = await idSchema.validateAsync(req.params)
-    } catch (err) {
+    } catch (err: any) {
         return res.status(400).json({message: err.message})
     }
     next()
