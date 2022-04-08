@@ -2,6 +2,8 @@ import express from 'express'
 import logger from 'morgan'
 import cors from 'cors'
 
+import { Request, Response, NextFunction } from 'express'
+
 import notesRouter from './routes/api/notes'
 
 const app = express()
@@ -14,11 +16,11 @@ app.use(express.json())
 
 app.use('/api/notes', notesRouter)
 
-app.use((req, res) => {
+app.use((req: Request, res: Response) => {
   res.status(404).json({ message: 'Not found' })
 })
 
-app.use((err: any, req: any, res: any, next: any) => {
+app.use((err: any, req: Request, res: Response, next: NextFunction) => {
   res.status(500).json({ message: err.message })
 })
 
