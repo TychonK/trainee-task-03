@@ -1,11 +1,5 @@
 import { Request, Response, NextFunction } from "express";
 
-export interface NoteRouterProps {
-    req: Request,
-    res: Response,
-    next: NextFunction
-}
-
 export interface Note {
     id: string;
     text: string;
