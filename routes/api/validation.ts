@@ -1,22 +1,23 @@
-import Joi from "joi";
+import { NextFunction, Request, Response } from "express";
+import Joi, { ObjectSchema } from "joi";
 
-const createSchema = Joi.object({
+const createSchema: ObjectSchema = Joi.object({
     text: Joi.string().required(),
     category: Joi.string().required(),
-    time: Joi.string().required()
+    time: Joi.string().required(),
 })
 
-const updateSchema = Joi.object({
+const updateSchema: ObjectSchema = Joi.object({
     text: Joi.string().optional(),
-    category: Joi.string().email().optional(),
+    category: Joi.string().optional(),
     archived: Joi.boolean().optional()
 }).or('text', 'category', 'archived')
 
-const idSchema = Joi.object({
+const idSchema: ObjectSchema = Joi.object({
     id: Joi.string().required()
 })
 
-export const validateCreate = async (req: any, res: any, next: any) => {
+export const validateCreate = async(req: Request, res: Response, next: NextFunction) => {
     try {
         const value = await createSchema.validateAsync(req.body)
     } catch (err: any) {
@@ -25,7 +26,7 @@ export const validateCreate = async (req: any, res: any, next: any) => {
     next()
 }
 
-export const validateUpdate = async (req: any, res: any, next: any) => {
+export const validateUpdate = async (req: Request, res: Response, next: NextFunction) => {
     try {
         const value = await updateSchema.validateAsync(req.body)
     } catch (err: any) {
@@ -38,7 +39,7 @@ export const validateUpdate = async (req: any, res: any, next: any) => {
     next()
 }
 
-export const validateId = async (req: any, res: any, next: any) => {
+export const validateId = async (req: Request, res: Response, next: NextFunction) => {
     try {
         const value = await idSchema.validateAsync(req.params)
     } catch (err: any) {

@@ -30,7 +30,7 @@ const listStats = () => {
         const obj = {
             [uniqueCategory]: {
                 active: notes.filter(note => note.category === uniqueCategory && note.archived === false).length,
-                archived: notes.filter(note => note.category === uniqueCategory && note.archived === true).length
+                archived: notes.filter(note => note.category === uniqueCategory && note.archived === true).length,
             }
         };
         return obj;
