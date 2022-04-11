@@ -3,6 +3,7 @@ import logger from 'morgan'
 import cors from 'cors'
 
 import { Request, Response, NextFunction } from 'express'
+import type { ErrorRequestHandler } from "express";
 
 import notesRouter from './routes/api/notes'
 
@@ -20,8 +21,11 @@ app.use((req: Request, res: Response) => {
   res.status(404).json({ message: 'Not found' })
 })
 
-app.use((err: any, req: Request, res: Response, next: NextFunction) => {
+const errorHandler: ErrorRequestHandler = (err, req, res, next) => {
   res.status(500).json({ message: err.message })
-})
+}
+
+app.use(errorHandler)
+
 
 export default app
